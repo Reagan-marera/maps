@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topographic Map of Kenya</title>
+  
+  <!-- Include Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <!-- Inline style to make sure the map takes up the correct height and width -->
+  <style>
+    #map {
+      height: 600px; /* Set the height of the map */
+      width: 100%;   /* Set the width of the map */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Create a div to hold the map -->
+  <div id="map"></div>
+
+  <!-- Include Leaflet.js -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <script>
+    // Create a map and set the initial position to Nairobi, Kenya (latitude: -1.286389, longitude: 36.817223)
+    var map = L.map('map').setView([-1.286389, 36.817223], 6); // Center on Nairobi with a zoom level of 6
+
+    // Add the OpenTopoMap tile layer (topographic map)
+    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &amp; &copy; <a href="https://opentopomap.org/copyright">OpenTopoMap</a>',
+      maxZoom: 17,
+    }).addTo(map);
+
+    // Optional: Add a marker at Nairobi (for example purposes)
+    L.marker([-1.286389, 36.817223]).addTo(map)
+      .bindPopup("This is Nairobi, Kenya!map engineered by Reagan")
+      .openPopup();
+  </script>
+
+</body>
+</html>
